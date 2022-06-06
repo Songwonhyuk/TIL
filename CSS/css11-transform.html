@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            color: white;
+            font-size: 30px;
+            word-wrap: break-word;
+            /* 
+            줄 바꿈을 위해 사용하는 속성
+            - word-wrap : 박스의 가로 영역을 넘친 단어 내에서 분리여부 결정
+                - normal
+                    - CJK : 단어넘침 X
+                    - None-CJK : 단어넘침 O
+                - break-word : 박스의 가로 영역을 넘치는 문자열이 없도록 줄 바꿈
+            - word-break : 단어의 분리를 어떻게 할 것인지 결정(음절/띄어쓰기 등)
+                - normal
+                    - CJK : 중단점 = 음절
+                    - Non-CJK : 중단점 = 공백(띄어쓰기, 하이픈(-))
+                - break-all : 중단점 = 음절
+            */
+        }
+
+        #tlate {
+            transform: translate(50px,50px);
+        }
+
+        #trotate {
+            transform: rotate(30deg);
+        }
+
+        #tscale {
+            transform: scale(0.6,0.6);
+        }
+
+        #tskew {
+            transform: skew(20deg,20deg);
+        }
+
+        #tran {
+            transition: width 0.5s, background-color 1.5s linear, trasform 1.5s;
+        }
+        /* trasition은 어떠한 이벤트가 발생시 transition의 옵션들이 시행되는 것 */
+
+        #tran:hover {
+            transform: translate(100px, 0px);
+        }
+
+        ul>li {
+            width: 300px;
+            background-color: gray;
+            margin-bottom: 3px;
+            font-size: 30pt;
+            font-weight: bold;
+            list-style-type: none;
+            /*list-style-type : 리스트 표현하는 .이나 - 들을 정하는 것 */
+            transition: width 1s linear, color 1s linear, letter-spacing 1s;
+            cursor: pointer;
+            /* 
+                cursor : 해당 영역 내에서의 커서의 모양
+                - pointer : 손가락 모양 
+                - text(=auto) : I 모양
+                - default : 화살표 모양
+                - not-allowed : 금지 모양
+            */
+        }
+
+        li:hover {
+            width: 400px;
+            color: red;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>transform</h1>
+
+    <h2>traslate</h2>
+    <div id="tlate">trasnlateeeeeeeee(x,y) : 위치이동</div>
+
+    <h2>rotate</h2>
+    <div id="trotate">rotate(deg) : 회전</div>
+
+    <h2>scale</h2>
+    <div id="tscale">scale(x,y) : 크기</div>
+    <!--현재크기 1기준-->
+
+    <h2>skew</h2>
+    <div id="tskew">skew(deg,deg) : 변형</div>
+
+    <h2>trasition</h2>
+    <div id="tran">transition</div>
+
+    <h2>MENU</h2>
+    <ul>
+        <li>학원소개</li>
+        <li>과정소개</li>
+        <li>강사소개</li>
+        <li>시설소개</li>
+    </ul>
+</body>
+</html>

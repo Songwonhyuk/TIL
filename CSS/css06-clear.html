@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #wrapper {
+            width: 600px;
+            border: 1px dotted red;
+        }
+
+        #box1 {
+            float: right;
+            width: 200px;
+            padding: 15px;
+            background-color: #ccc;
+        }
+
+        #box2 {
+            float: left;
+            width: 200px;
+            padding: 15px;
+            background-color: pink;
+        }
+
+        #box3 {
+            background-color: gray;
+            padding: 10px;
+            clear: right;
+            /* 
+                플롯 설정에 대한 취소옵션 : clear:right는 box1의 float:right 옵션을 상쇄
+                => 박스1의 float:right로 인해 박스 3가 박스1왼쪽으로 흘러내려야하는데 
+                clear:right로 인해 box3가 box1 왼쪽으로 흘러야 하는 옵션은 취소되어 
+                box2의 오른쪽에서만 흘러내리게 됨   
+            */
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Lorem Ipsum</h1>
+
+    <div id="wrapper">
+        <div id="box1">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </div>
+            
+        <div id="box2">
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+        </div>
+
+        <div id="box3">
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+        </div>
+    </div>
+</body>
+</html>

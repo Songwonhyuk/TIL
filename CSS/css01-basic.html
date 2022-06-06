@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p{
+            background-color: skyblue;
+        }
+    </style>
+
+    <link rel="stylesheet" href="resources/css/css01.css">
+</head>
+<body>
+
+    <h1>css 기본문법</h1>
+
+    <b style="color: blue;">1. inline 스타일 시트</b>
+    <!-- 왜 외부스타일시트 색을 변경시켰는데 얘는 변경이 안됐는지 생각-->
+    <!-- 
+        스타일 적용의 우선순위
+        1. 인라인 스타일 : HTML 요소 내부에 위치
+        2. 내부/외부 스타일 시트 : head 요소 내부 / 외부 css파일 link
+        3. 웹 브라우저 기본 스타일
+
+        즉, 인라인 스타일이 적용된 태그는 내부/외부 스타일시트와 상관없이 무조건 인라인 스타일이 적용됨
+    -->
+    <p>
+        <span>2. 내부 스타일 시트 : html 내부에서 간단하게 작성</span>
+        <br>
+        <b>3. 외부 스타일 시트: *.css 파일 생성</b>
+    <!--외부 스타일 시트를 css파일로 만들어서 html파일과 link해주는게 대세임-->
+    </p>
+</body>
+</html>

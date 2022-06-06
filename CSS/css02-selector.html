@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="resources/css/selector.css" type="text/css">
+    <!-- 
+        type="text/css"
+        해당 옵션은 텍스트로 되어있는 것을 css파일로 읽겠다는 의미
+    -->
+</head>
+<body>
+
+    <h1>선택자</h1>
+
+    <article>
+        <h3>타입 선택자</h3>
+        <pre>태그 이름을 지정하여 선언</pre>
+        <!--
+            pre 태그 : 미리 정의도니 형식의 텍스트를 정의할 때 사용
+            즉, 컨텐츠에서 사용된 띄어쓰기와 줄바꿈이 모두 그래도 브라우저에 표현
+        -->
+        <pre>
+            안녕하             세요
+
+
+
+            나에요~~~         ~~~~~~~
+        </pre>
+    </article>
+
+    <article>
+        <h3>id 선택자</h3>
+        <ul>
+            <li id="multi1">요소에 id를 지정하고</li>
+            <li id="multi2">지정된 id 값을 사용하여 선택</li>
+            <li id="multi3">#으로 구분</li>
+            <!--
+                id는 유일한 하나의 요소만 선택해서 변경할 수 있음
+                즉, 하나의 아이디를 여러 요소에 겹처서 사용하면 안됨
+                id는 일회용품같은 거임!
+            -->
+        </ul>
+    </article>
+
+    <article>
+        <h3>class 선택자</h3>
+        <ol>
+            <li class="multi1">요소에 class를 지정하고</li>
+            <li class="multi2">지정된 class 값을 사용하여 선택</li>
+            <li class="multi2">.(dot)으로 구분</li>
+            <!-- 
+                class는 여러 요소를 한번에 지정하여 변경 
+                같은 스타일을 여러 요소에 적용하고 싶을 때, class 선택자 사용
+            -->
+        </ol>
+    </article>
+
+    <article>
+        <h3>전체 선택자</h3>
+        <b>*</b>
+    </article>
+
+    <article id="atc">
+        <h3>자식 선택자</h3>
+        <p>자식 1</p>
+        <!-- 
+            '>'를 사용해서 자식 선택자를 지정가능
+            부모 선택자의 바로 아래에 위치한 자식 선택자에만 영향을 줌
+            ex) article > p {} : article 태그 한단계 밑에서 p태그를 갖는 자식선택자만 변경하겠다는 뜻
+            즉, 자식 1만 영향을 받고 div 아래에 위치한 자식2는 영향x
+        -->
+        <div>
+            <p>자식 2</p>
+        </div>
+    </article>
+
+    <article id="atc2">
+        <h3>하위 선택자</h3>
+        <div>
+            <p>
+                <span>특정 요소 하위의</span>
+            </p>
+            <span>요소를 지정할 때 선택</span>
+        </div>
+        <span>하위?</span>
+    </article>
+    <!--
+        하위 선택자를 사용해서 자식 선택자를 지정하면 하위에 있는 모든 태그에 영향
+    -->
+    
+    <article>
+        <h3>인접 선택자</h3>
+        <b>지정한 요소</b>
+        <span>다음에 나오는 요소 선택</span>
+        <pre>요소?</pre>
+    </article>
+
+    <article>
+        <h3>속성 선택자</h3>
+        <p title="a">속성이 정의된</p>
+        <p title="b">태그만 선택</p>
+        <p>속성 없음...</p>
+    </article>
+
+    <article>
+        <h3>가상클래스 선택자</h3>
+        <ul>
+            <li>특정 이벤트가 발생된 태그 선택</li>
+            <li><a href="https://www.naver.com">네이버</a></li>
+            <li><a href="https://www.ubuntu.com">우분투 리눅스</a></li>
+            <li><input type="checkbox">체크하면 켜짐!</li>
+            <li><input type="search">검색</li>
+        </ul>
+    </article>
+</body>
+</html>

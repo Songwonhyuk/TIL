@@ -1,0 +1,113 @@
+/* 타입 선택자*/
+
+pre {
+    text-align: center;
+    /*text-align은 가로정렬을 의미하는 옵션*/
+}
+
+/* id 선택자 (#으로 지정) */
+
+#multi1 {
+    color: pink;
+}
+
+#multi2 {
+    background-color: skyblue;
+}
+
+#multi3 {
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* class 선택자 (.으로 지정)*/
+
+.multi2 {
+    background-color: green;
+}
+
+/* 전체 선택자 (*으로 지정) */
+* {
+    color: black;
+    background-color: white;
+    text-align: left;
+    /* 
+        전체선택자는 다른 특수 선택자에 보다 우선순위가 밀림
+        전체 선택자로는 전체적인 기본값만 정해놓고 id/class 등의 선택자로 개별 설정함!
+    */
+}
+
+/* 자식 선택자 ('>'로 지정) */
+
+#atc > p {
+    background-color: darkmagenta;
+    /* atc id의 바로 아래에 있는 p태그의 컨텐츠에 영향 */
+}
+
+#atc > div > p{
+    color: red;
+    /* atc id의 div태그의 아래에 있는 p태그의 컨텐츠에 영향 */
+}
+
+/* 하위 선택자 (한칸 띄고 태그명 입력해서 지정) */
+
+#atc2 span {
+    color: brown;
+    /* atc2 id의 하위에 존재하는 모든 span 태그의 컨텐츠에 영향 */
+}
+
+/* 인접 선택자 (+를 사용해 지정) */
+
+span + pre {
+    background-color: hotpink;
+    /* 
+        자식 선택자의 일종임. 즉, 같은 부모를 가짐
+        span 바로 뒤에오는 pre태그에만 변경사항을 적용한다는 뜻
+    */
+}
+
+/* 속성 선택자 (대괄호[]를 사용해 지정) */
+
+p[title] {
+    background-color: beige;
+    /*
+        p태그 중 title이라는 속성을 가지는 요소들에 영향
+    */
+}
+
+/* 가상 클래스 선택자
+: 선택자 뒤에 ':가상이벤트'를 붙여서 특정이벤트마다 적용할 스타일 설정 */
+
+a:link {
+    color: green;
+    font-size: 20pt;
+    /* :link = 방문한 적이 없는 링크*/
+}
+
+a:visited {
+    color: black;
+    /* :visited = 방문한 적이 있는 링크*/
+}
+
+a:hover {
+    color: yellowgreen;
+    /* :hover = 마우스 롤 오버했을 때*/
+}
+
+a:active {
+    background-color: red;
+    color: yellow;
+    /* :active = 마우스를 클릭했을 때*/
+}
+
+input:checked {
+    width: 100px;
+    height: 100px;
+    /* :checked = 체크박스에 체크가 되었을 때*/
+}
+
+input:focus {
+    color: red;
+    font-weight: bold;
+    /* :focus = input에 내용을 입력할 때*/
+}
