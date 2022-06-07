@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var name = 'Korea';
+        console.log(name);
+
+        var name = 'Italy';
+        console.log(name);
+
+        /* let tag = 'song'
+        console.log(tag)
+
+        let tag = 'kim'
+        console.log(tag) */
+
+        /*
+         [var , let, const 는 모두 javascript에서의 변수 선언 방식]
+         - var : 구버전
+            - 변수를 재선언해도, 에러가 발생하지 않고 각기 다른 값이 출력되는 단점
+
+         - let, const : 최신 버전(ES6 이후)
+            - 변수 재선언하면 에러가 발생함. 즉, 변수 재할당이 불가능
+                - let : 변수에 재할당이 가능
+                    ex) let name = 'korea'
+                        name = 'japan' <== 재할당
+                - const : 재할당 불가능
+         */
+
+        let myTest; //변수 선언과
+        myTest = 'let_test_practice'; // 할당은 따로 하기도 가능하고
+        console.log(myTest);
+
+        let myTest2 = 'let_test_practice2'; // 변수선언과 할당을 동시에 할 수도 있음
+
+        // 결론!!
+        // 그냥 변수선언은 기본적으로 const사용해라!!
+        // 다만, 재할당이 필요한 경우에만 한정해서 let을 사용
+
+        const mylove = 'you';
+        console.log(mylove);
+    </script>
+
+
+
+    <script type="text/javascript">
+        var variable = 10;
+
+        function val01(){
+            variable = variable + 5 // 변수 선언과 변수 선언하지 않은 것의 차이? 스코프 개념에서 나옴
+            document.getElementById('value01').innerHTML="<b style='color:red; background:yellow;'>" + variable + "</b>";
+        }
+
+        function val02(){
+            innerVal = variable + 10; // innerVal 변수에 variable + 10 을 할당.
+            var doc = document.getElementById('value02');
+            doc.innerHTML="<b style='color:red; background:yellow;'>"+innerVal+"</b>";
+        }
+
+        // var로 변수 선언할 때 마다 새로운 변수가 됨 : 재선언/재할당이 가능
+        function jsTpye(){
+            var myVal = "문자";
+            alert(myVal + " 의 타입 : " + typeof(myVal))
+
+            var myVal = 123; // 재선언
+            alert(myVal + " 의 타입 : " + typeof(myVal))
+
+            myVal = true; //재할당
+            alert(myVal + " 의 타입 : " + typeof(myVal))
+
+            myVal = new val01();
+            alert(myVal + " 의 타입 : " + typeof(myVal));
+
+            /* 함수도 값이 될 수 있음. 즉, 값 그 자체가 함수의 형태를 띠고 있음*/
+            myVal = function(){
+                alert('타입 추론! function도 타입이다~!');
+            }
+            alert(myVal + " 의 타입 : " + typeof(myVal))
+
+            myVal()
+
+        }
+    </script>
+</head>
+<body>
+
+    <h1>var 변수 = 값</h1>
+
+    <dl>
+        <dt>변수 선언 규칙</dt>
+        <dd>대소문자 구분</dd>
+        <dd>영문, $, _로 시작</dd>
+        <dd>영문, $, _, 숫자 사용 가능</dd>
+        <dd>키워드(예약어) 사용 불가</dd>
+        <br>
+        <dt>변수의 범위</dt>
+        <dd>전역변수 : window 객체에 포함
+            <button onclick="val01();">확인</button>
+            <p id="value01"></p>
+        </dd>
+
+        <dd>지역변수 : 함수나 객체 내부에 선언
+            <button onclick="val02();">확인</button>
+            <p id="value02"></p> <!-- document.getElementById('value01')에 의해 제어 -->
+        </dd>
+        <br>
+
+        <dt>타입의 종류
+            <button onclick="jsTpye()">확인</button>
+        </dt>
+        <dd>string</dd>
+        <dd>number</dd>
+        <dd>boolean</dd>
+        <dd>Null</dd>
+        <dd>object</dd>
+        <dd>function</dd>
+
+    </dl>
+    
+</body>
+</html>
