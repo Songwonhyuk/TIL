@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+
+        }
+        #div{
+            width: 700px;
+            border: 1px solid green;
+            
+        }
+
+        #a1 > h2 {
+            border-bottom: 1px solid green;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+
+        #a1 > p {
+            border-bottom: 1px solid green;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+
+        #a2 > h2 {
+            border-bottom: 1px solid green;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+
+        #a2 > p {
+            border-bottom: 1px solid green;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+    </style>
+    
+    <script>
+        // 1. 함수 레벨 스코프
+        function functionLevelScope() {
+            if (true) {
+                var myscope = "function level scope";
+            }
+            console.log(myscope);
+        }
+
+        functionLevelScope(); 
+        /*
+            if 안에서 생성한 myscope가 console.log(myscope)로 출력됨
+            만약 myscope가 블록 레벨 스코프라면? if문이 끝날때 myscope는 없어지고 cosole.log에서 에러가 발생할 것임
+            그러나 myscope는 함수레벨스코프 이기 때문에 functionLevelScope()함수 내부 어디에서든 사용 가능!!
+        */
+
+        
+
+        // 2. 블록 레벨 스코프
+        /*function blockLevelScope(){
+            if (true) {
+                let mybls = "block level scope";
+                console.log(mybls);
+            }
+            console.log(mybls); // 'mymls is not dfined' 에러 발생!
+        }
+
+        blockLevelScope();*/
+        /*
+            let mybls를 if문 안에 선언하였기 때문에 if 문 안에서는 console.log값이 출력이 됨
+            but, if문 밖에서는 console.log로 출력하면 에러가 발생함
+            즉, mybls는 블록 레벨 스코프를 가지기 때문에 if문 밖에서는 사용이 불가능함
+        */
+
+
+        // 3. 렉시컬 스코프(Lexical Scope) = 어휘적 범위 지정
+        var x = "glabal";
+        function func1() {
+            var x = "local"
+            func2();
+        }
+
+        function func2() {
+            console.log(x);
+        }
+
+        func1(); // global 출력 => 왜 global이 출력 될까?
+        /*
+            그 이유는 바로 렉시컬 스코프에 있음
+            1. x를 func1에서 local로 변경후, func2를 실행하면 func2는 x를 출력
+            2. func2에서의 x는 코드가 작성된 문맥에서 존재하지 않기 때문에 상위 스코프에서 x를 찾게됨(**중첩스코프 참고)
+            3. 결국 window 영역의 x를 출력하게 됨
+        */
+        func2(); // global 출력
+
+
+        // 4. 중첩 스코프 (Scope chain)
+        // sc2() 환경 -> sc1() 환경 -> global 환경 순으로 변수를 찾아 올라가면서 참조함
+        var globalText = 'global';
+
+        function sc1() {
+            var sc1Text = 'sc1';
+            function sc2() {
+                var sc2Text = 'sc2';
+                console.log(globalText);
+                console.log(sc1Text);
+                console.log(sc2Text);
+            }
+            sc2();
+        }
+        sc1();
+    
+    </script>
+    
+    <script>
+    // 코드1 (클로저 x)
+    function outer1() {
+        var outerText1 = "Is Closure?";
+        function inner1() {//inner 함수는 outer함수 안에서만 사용할 수 있는 내부함수. 중첩 스코프(scope chain)을 통해 outerText1을 출력하는 내부 함수.
+            console.log(outerText1); //Is Closure? 출력
+        }
+        inner1();
+    }
+    outer1();
+
+    // 코드 2 (클로저 o)
+    function outer2() {
+        var outerText2 = "Is Closure!";
+        function inner2() {
+            console.log(outerText2); 
+        }
+        return inner2; //outer함수의 리턴값은 내부함수 inner
+        /*
+            outer 함수가 종료 되면, 지역변수는 없어지는 것이 상식적
+            but, 코드 2의 결과는 정상적으로 출력됨
+            WHY?
+            myClosure함수가 클로저이기 때문!!
+            클로저는 두개의 것(함수 + 그 함수가 만들어진 환경)으로 이루어진 특별한 객체의 한 종류
+            => 환경이란? 클로저가 생설 될때 그 범위 안에 있던 여러 지역변수들로 구성
+               즉, myClosure함수는 inner함수와 Is Closure! 문자열을 포함하는 클로저인 것임
+        */
+    }
+    var myClosure = outer2();
+    myClosure(); // 클로저
+    </script>
+
+</head>
+<body>
+    <h1>클로저
+        <p>클로저는 함수와 함수가 선언된 어휘적 환경의 조합<br>
+        클로저의 이해를 위해서는 어떻게 변수의 유효범위를 지정하는지(Lexical scoping)를 이해해야함
+        </p>
+    </h1>
+    
+    <div id="a1">
+        <h2><b>유효범위(Scope)</b></h2>
+        <p>
+            변수나 함수는 이름을 부여하여 의미를 갖게됨.
+            만약 이름이 없다면? 변수나 함수는 그저 하나의 메모리 주소에 불과<br>
+            따라서 "이름:값"의 대응표를 만들어 사용하고 이 대응표의 이름을 가지고 값을 저장하고 가져와 사용함<br>
+            이 대응표의 충돌을 막기 위해 <b>유효범위(Scope)</b>라는 규칙을 사용하게 됨!!
+        </p>
+
+        <ol>
+            <li><b>함수 레벨 스코프(Function Level Scope)</b></li>
+            <p>자바 스크립트에서 var 키워드로 선언된 변수나, 함수 선언식으로 만들어진 함수는 함수 레벨 스코프를 갖음<br>
+                즉, 함수 내부 전체에서 유효한 값을 가지게 됨
+            </p>
+            <li><b>블록 레벨 스코프(Block Level Scope)</b></li>
+            <p>ES6에서 let, const 키워드는 블록 레벨 스코프 변수를 만들어 줌</p>
+            <li><b>렉시컬 스코프(Lexical Scope)</b></li>
+            <p>정적 스코프(static scope)라고도 불림
+                렉시컬 스코프는 소스코드가 작성된 그 문맥에서 결정됨
+            </p>
+            <li><b>중첩 스코프(Scope Chain)</b></li>
+            <p>자바 스크립트의 스코프 개= 렉시컬 환경 & 환경 레코드
+                - 환경 레코드 : "이름:값"의 대응표
+                - 렉시컬 환경 : 이 환경 레코드와 상위 렉시컬 환경에 대한 참조로 이루어져 있음
+                <br>
+                1. 현재 렉시컬 환경의 대응표(환경 레코드)에서 변수를 찾아봄
+                2. 없다면? 상위 렉시컬 환경을 <b>참조</b>하여 찾아봄
+                3. 해당하는 이름을 찾거나 상위 렉시컬 환경 레코드가 null이 될경우 중첩 스코프 탐색이 중단
+            </p>
+        </ol>
+    </div>
+
+    <div id="a2">
+        <h2><b>클로저</b></h2>
+        <p>클로저는 독립적인 변수를 가르키는 함수<br>
+            또는 클로저 안에 정의된 함수는 <b>만들어진 환경을 기억한다!!</b>
+            즉, 클로저는 두개의 것(함수, 그 함수가 만들어진 환경)으로 이루어진 특별한 객체의 한 종류
+        </p>
+
+    </div>
+
+
+
+
+</body>
+</html>

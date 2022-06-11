@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 100px;
+        }
+    </style>
+
+    <script>
+        // if 문
+        function ifTest(){
+            var i = prompt("숫자 1이나 2를 입력해주세요!");
+            if(i==1){
+                alert("one!");
+            } else if (i==2){
+                alert("two");
+            } else {
+                alert("다른 숫자 입니다..");
+            }
+        };
+
+        // switch : prompt 안에 입력되는 값에 해당하는 케이스로 점핑해서 그 값에 해당하는 명령부터 그 아래의 명령들 전부 수행
+        // 따라서 케이스 마다 break를 걸어줘야 필요한 케이스만 사용가능함! 
+        function switchTest() {
+            var season = prompt("봄, 여름, 가을, 겨울 중 좋아하는 계절을 입력해주세요!")
+            
+            switch(season){
+                case "봄":
+                    alert("봄에는 벚꽃엔딩!");
+                    break;
+                case "여름":
+                    alert("여름에는 바다!");
+                    break;
+                case "가을":
+                    alert("가을에는 단풍구경!");
+                    break;
+                case "겨울":
+                    alert("겨울에는 스키장!");
+                    break;
+                default:
+                    alert("봄, 여름, 가을, 겨울 중 하나만 입력해 주세요");
+                    // default : 프롬프트에 입력되는 값이 케이스에 해당하는 값과 일치하는 경우         
+            }
+        };
+
+        // for 반복문 : for(초기값; 조건식; 증감식;) {반복할 명력;}
+        function forTest(){
+            var a = 10;
+            var b = 3;
+            var result = a++ + --b + b++ + ++a;
+            /*
+            증감 연산자 (++, --)
+            - 후위연산 : 연산자를 변수 뒤에 붙여서 값을 먼저 리턴, 연산을 나중에
+            - 전위연산 : 연산자를 변수 앞에 붙여서 연산을 먼저, 값을 나중에 리턴
+            */
+            alert(result);
+            alert(a);
+            alert(b);
+
+
+            // 초기값 설정 -> 조건식이 참이면 -> 명령 수행 -> 명령이 끝나면 증감식 시행 -> 반복(조건식이 거짓이 될때 까지)
+            for (var i = 0; i<10; i++){
+                console.log(i);
+            };
+        };
+
+        // for문을 사용한 구구단 만들기
+        function gugudan1(){
+            for (i=1; i<10; i++){
+                console.log(i + "단");
+                for (j=1; j<10; j++) {
+                    console.log(i + " * " + j + " = " + i*j)
+                }
+                console.log("")
+            }
+        };
+
+
+        // while문
+        function whileTest(){
+            var i = 0;
+            while (i<10){
+                console.log(i);
+                i++;
+            };
+        };
+
+        //while문을 사용한 구구단 만들기
+
+        function gugudan2(){
+            var i = 0;
+            while(i<9){
+                console.log(i + 1 +"단");
+                i++;
+                var j = 1;
+                while (j<10){
+                    console.log(i + " * " + j + " = " + i*j);
+                    j++;
+                };
+                console.log("")
+            };    
+        };
+    </script>
+</head>
+<body>
+    
+    <button onclick="ifTest();">if</button>
+    <br>
+    <button onclick="switchTest();">switch</button>
+    <br>
+    <button onclick="forTest();">for</button>
+    <br>
+    <button onclick="whileTest();">while</button>
+    <br>
+    <button onclick="gugudan1();">for 구구단</button>
+    <br>
+    <button onclick="gugudan2();">while 구구단</button>
+
+</body>
+</html>

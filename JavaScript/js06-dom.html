@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // node : DOM API 상에 존재하는 모든 것들 그것들을 포괄하는 이름이 node
+        // node 밑에 Document/Element(tag)/Attribute/CharacterData
+        // node list : 오직 Element(tag)만 담을 수 있는 배열
+        // node list내 각각의 엘리먼트에 접근하기 위해서는 배열의 인덱스를 사용해야함 
+
+        function searchQS(){
+            var doc = document.querySelector("#test");
+            doc.innerHTML = 'querySelector("css 선택자")';
+            // document.querySelector('css 선택자') : document 상의 특정 css선택자나 특정 css선택자를 가진 Element들 중 가장 첫번째에 있는 것을 반환
+            // document.querySelectorAll('css 선택자') : document 상의 css선택자를 가진 모든 Element들을 node list로 반환
+        };
+
+        function searchID() {
+            var doc = document.getElementById("test");
+            doc.innerHTML = 'ID로 탐색!';
+            doc.style.color = 'red';
+        };
+
+        function searchName() {
+            var doc = document.getElementsByName("test02");
+            doc[1].value = 'name 속성으로 엘리먼트 탐색!';  
+        };
+
+        function searchTagName() {
+            var doc = document.getElementsByTagName("p");
+            doc[3].innerHTML = 'tagname으로 탐색!!';
+            doc[3].style.color = 'blue';
+        }
+    </script>
+</head>
+<body>
+    
+    <p onclick="searchQS();">DOM 탐색 메서드</p>
+
+    <p id="test" onclick="searchID();">1. 엘리먼트의 ID로 탐색 : 엘리먼트 하나를 선택(중복 불가) -> 반환 : 값 하나</p>
+
+    <P onclick="searchName();">2. 엘리먼트 Name으로 탐색 :엘리먼트 여러개를 선택 -> 반환 : 배열(Nodelist)
+        <br><input type="text" name="test02">
+        <br><input type="text" name="test02">
+        <br><input type="text" name="test02">
+    </P>
+
+    <p onclick="searchTagName();">3. 엘리먼트의 Tag name으로 탐색 : 엘리먼트 여러개를 선택 -> 반환 : 배열(Nodelist)</p>
+</body>
+</html>

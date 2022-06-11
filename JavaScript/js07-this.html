@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        dl > b {
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        // 1. 전역범위에서 호출
+        console.log(this); // this = window 객체
+
+        // 2. 함수범위에서 호출
+        // 2-1. 일반 함수 범위에서 호출
+        function outside() {
+            console.log(this); // this는 window
+        
+
+        // 2-2. 함수 안에 함수가 선언된 내부 함수 호출
+            function inside(){
+                console.log(this); // this 는 window
+            }
+            inside();
+        }
+        outside();
+        
+        // 3. 객체의 메소드
+        // 3-1. 객체 또는 클래스 안에서 메소드 실행한다면 this는 object 자기 자신을 의미
+        var man = {
+            name: 'john',
+            hello: function(){
+                console.log('hello ' + this.name); //객체이므로 this는 man을 가리킴
+            }
+        };
+        
+        man.hello(); // hello john 출력
+
+        // 3-2. 함수를 객체 외부에서 선언하고, 객체 안에서 호출하는 경우 : this는 자기 자신
+        // 일반함수 welcome 선언
+        function welcome() {
+            console.log('welcome '+this.name); // 여기서 this는 전역객체 window. 따라서 실행시키면 undefined가 뜸
+        };
+
+        man.welcome = welcome; //man 객체의 welcome 속성에 일반함수 welcome을 추가
+
+        man.welcome(); // welcome 함수가 man 객체에서 호출되었으므로 welcome john이 출력됨
+
+        // 3-3. 객체의 함수를 외부에서 호출하는 경우 : this는 window 객체
+        // man 객체의 thanks 속성에 함수를 선언
+        man.thanks = function() {
+            console.log('thanks '+ this.name); // this 는 man 객체
+        };
+        man.thanks();  //thanks john이 출력
+
+        var thankyou = man.thanks; // 이 함수를 객체 외부에서 참조
+        thankyou(); // 객체 외부이므로 this가 window 객체가 되어서 thanks (undified)가 출력
+
+        // 또 다른 객체에서 이 함수를 호출하면 어떻게 될까?
+        woman = {
+            name : 'barbie',
+            thanks : man.thanks // man.thanks 함수를 woman.thanks 함수에 참조
+        };
+
+        woman.thanks(); // this가 포함된 함수가 호출된 객체가 woman 이므로 thanks barbie가 출력
+
+
+        // 4. 메소드에서 내부 함수를 선언하는 경우
+        var man = {
+            name : 'john',
+            hello : function() { //객체의 메소드
+                function getName() { //객체의 메소드 안에 함수 선언. 즉, 내부 함수
+                    return this.name; // 여기서 this는 window. 내부함수는 엄밀히 말해 메소드가 아니기 때문에 단순 함수 호출 규칙에 따라 this는 window 객체를 의미함
+                }
+                console.log('hello '+ getName());
+            }
+        };
+        man.hello(); // hello (undefined)가 뜸. this가 window 객체이기때문!
+
+
+        // 5. 생성자 : new 키워드
+        // 클래스 역할을 할 함수 선언
+        function Man() {
+            this.name = 'John';
+        };
+
+        var john = new Man(); //생성자로 객체 선언
+
+        console.log(john.name); // this가 Man 객체를 가리키고 있어 이름이 정상적으로 John으로 출력됨
+    </script>
+</head>
+<body>
+    <h2><b>1. 그때 그때 달라요~</b></h2>
+    <p>
+    일반적으로 javascript에서는 <b>this</b>의 값은 함수를 호출한 방법이 결정함
+    즉, this가 무식하게 하나로 정해진 것이 아니라 this의 값이 내가 어디에서 어떻게 호출하느냐에 따라 변함
+    </p>
+
+    <dl><b>this의 값이 달라 질 수 있는 경우들</b>
+        <br><br>
+        <dt>1. 전역범위(Global context)
+            <dd>
+                전역범위, 그러니까 javascript에서 가장 평범하게 일반적으로 [this]를 호출한다면,<br><b>[this]는 window 전역 객체를 가리킴</b>
+            </dd>
+        </dt>
+        <br>
+        <dt>2. 함수범위
+            <dd>
+                [this]를 함수 내에서 호출한다면? <b>현재 실행되고 있는 코드의 문맥(context)</b>에 따라 달라짐
+            </dd>
+        </dt>
+        <br>
+        <dt>3. 객체의 메소드
+            <dd>
+                이제부터 this가 바뀌기 시작함<br>
+                1) 객체나 클래스 내부에 선언된 메소드 함수<br>
+                2) 함수를 객체 외부에서 선언하고, 객체 안에서 호출하는 경우<br>
+                3) 객체의 함수를 외부에서 호출하는 경우<br>
+                4) 메소드에서 내부 함수를 선언하는 경우
+            </dd>
+        </dt>
+        <br>
+        <dt>4. 생성자
+            <dd>함수 앞에 new 키워드를 붙이고 선언할 때, [this]를 해당 객체에 바인딩함</dd>
+        </dt>
+    </dl>
+</body>
+</html>

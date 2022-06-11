@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle{
+            border: 1px solid red;
+            display: none;
+        }
+    </style>
+
+    <script>
+        function numberObj(){
+            // literal(값)
+            var num01 = 3;
+            // object(객체)
+            var num02 = new Number(3);
+
+            alert(num01 + " 의 타입은 " + typeof(num01));
+            alert(num02 + " 의 타입은 " + typeof(num02));
+
+            //string -> number
+            alert(parseInt("1")+1);
+            alert(parseInt("1.5")+1); //정수형
+            alert(parseFloat("1.5")+1); //실수형
+
+            // NaN : Not a Number
+            alert(parseInt("a")+1);
+
+            /*
+                0 : 그냥 숫자 0
+                Null : 변수는 있는데 변수의 값이 없는 것
+                undefined : 변수도 없는 것
+                NaN : 뭔가 있긴한데 잘못된 것 = 오류
+            */
+
+            var num = prompt("숫자만 입력해 주세요");
+            if (isNaN(num)){
+                alert("숫자가 아닙니다.");
+            } else {
+                alert("숫자 입니다.");
+            }
+
+            /*
+                isA : True or False (A인지 아닌지)
+                hasA : True or False (A를 가지고 있는지 아닌지)
+            */
+        };
+
+        function randomNum() {
+            // Math.random() : 0 <= x < 1
+            // Math.floor() : 버림
+            // Math.round() : 반올림
+            // Math.ceil() : 올림
+            var min = 10;
+            var max = 100;
+
+            var ran = Math.round(Math.random() * (max - min) + min);
+            console.log(ran);
+        };
+
+        function randomBG() {
+            var rnum = function() {
+                return Math.round(Math.random()*256);
+            }
+            // style 색상 표현식 : rgb(256,256,256)
+            document.body.style.backgroundColor = "rgb(" + rnum() + "," + rnum() + "," + rnum() + ")";
+        };
+
+        function randomCircle(){
+            var rnum = Math.floor(Math.random() * 200);
+            var circle = document.getElementById('circle');
+
+            circle.style.width = rnum + "px";
+            circle.style.height = rnum + "px";
+
+            circle.style.borderRadius = Math.floor(rnum/2) + "px";
+
+            circle.style.display = "block";
+        }
+
+        function randomArea(){
+            //var div = document.getElementById('circle');
+            //console.log(div)
+            
+            var circleWidth = document.getElementById('circle').style.width;
+            // console.log(circleWidth);
+
+            // 지름
+            var r2 = parseInt(circleWidth);
+            //console.log(r2);
+
+            // 반지름
+            var r = Math.floor(r2/2);
+
+            // 넓이
+            //var area = Math.PI * r * r;
+            var area = Math.PI * Math.pow(r,2);
+            // Math.pow(a,b) = a^b
+
+            // 둘레
+            var len = Math.PI * r2;
+
+            document.getElementById('area').innerHTML = Math.floor(area);
+            document.getElementById('len').innerHTML = Math.floor(len);
+
+            //circle 이라는 변수가 circleArea 함수 내부에 없는데 왜 출력될까?
+            //난이도 : 매우 어려움(굳이 안해도 됨)
+            console.log(circle);
+        }
+
+    </script>
+</head>
+<body>
+    <h1>숫자</h1>
+
+    <button onclick="numberObj()">숫자</button>
+    <br>
+    <button onclick="randomNum()">난수</button>
+    <br>
+    <button onclick="randomBG()">배경색 변경</button>
+    <br>
+    <button onclick="randomCircle()">원그리기</button>
+    <br>
+    <button onclick="randomArea()">원의 넓이/둘레</button>
+    <br><br><br><br><br>
+    <div id="circle"></div>
+    <br>
+    원의 넓이 : <span id="area"></span>
+    <br>
+    원의 둘레 : <span id="len"></span>
+    <br>
+
+</body>
+</html>

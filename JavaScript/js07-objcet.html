@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function object01(){
+            this.name = '홍길동'; // this -> 외부에서 참조 가능
+            var name02 = 'hong-gd'; // 외부에서 참조 불가
+            this.getName02 = function(){
+                return name02;
+            };
+        };
+        // js07-this.html에서 자세한 정리
+
+
+        //객체 리터럴 (python의 딕셔너리와 유사 => 이름 : 값)
+        var object02 = {
+            name : "kim-sd",
+            prn : function(){
+                alert(object02.name + " : 010-9999-9999")
+            }
+        };
+    </script>
+</head>
+<body>
+    
+    <h1>객체</h1>
+    
+    <pre>
+        객체의 구성
+        - property : 속성
+        - method(function) : 기능
+        - this : 객체 내부의 메서드나 속성을 정의 (python에서의 self와 유사)
+        - prototype : 객체의 확장
+    </pre>
+
+    <button onclick="objTest();">확인</button>
+</body>
+</html>

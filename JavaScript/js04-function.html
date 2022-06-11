@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+
+        // 명시적 함수
+        function func01(){//함수의 이름 :func01
+            alert("함수의 이름이 있음!!");
+        };
+
+        var func01_2 = function subtraction(x, y){//함수의 이름 : subtraction
+            return x-y;
+        };
+
+
+        // 익명 함수
+        var func02 = function(){
+            alert("함수의 이름이 없습니다");
+        };
+
+
+        // 즉시 실행 함수 : 기명 즉시 실행함수 & 익명 즉시 실행함수 
+        // 웹 브라우저를 키자마자 실행됨
+        (function func03(){
+            alert("기명 즉시 실행함수!!");
+        }());
+
+        (function(){
+            console.log("익명 즉시 실행 함수!!");
+        }());
+
+
+        // 리터럴 함수(함수 리터럴)
+        function literalPrn(literal){
+            literal("안녕하세요. 함수형태의 값! 입니다.");
+        };
+
+        function func04(){
+            literalPrn(function(msg){
+                alert(msg);
+            });
+        }
+
+    </script>
+</head>
+<body>
+    
+    <h1>function : 기능</h1>
+
+    <h2>함수의 종류</h2>
+    <p onclick="func01();">명시적 함수</p>
+    <!--
+        명시적 함수 : 함수의 이름이 있는 함수. 함수명으로 호출함 
+        함수 선언문 형식에 의해 함수를 생성함
+    -->
+    <p onclick="func02();">익명 함수</p>
+    <!--
+        익명 함수 : 함수의 이름이 없는 함수. 보통 값으로 사용됨.
+        함수를 호출하기 위해서는 변수에 값으로 할당하고 해당 변수를 호출 해야함.
+        함수 표현식 형식에 의해 함수를 생성함
+    -->
+    <p onclick="func03();">즉시 실행 함수</p>
+    <!--
+        즉시 실행 함수 : 함수를 정의하자마자 바로 호출
+        일반 함수들은 함수를 정의하고, 변수에 함수를 저장하고 실행하는 과정을 거침
+        한 번의 실행만 필요로 하는 초기화 코드 부분에 많이 사용
+    -->
+    <p onclick="func04();">함수 리터럴</p>
+    <!--
+        상수 : 변하지 않는 변수. 즉, 메모리 위치(공간)
+        리터럴 : 값을 표현하는 방식이며 변수에 넣는 변하지 않는 데이터 그 자체를 뜻함. 즉, 메모리 위치(공간)안에 저장되는 값
+        함수 리터럴 : 함수를 값으로 표현하는 방식 => function () {}
+        >>>> 익명 함수 : 리터럴 방식으로 만들어진 이름없는 함수
+    -->
+    <p onclick="closureTest01();">클로저 : 외부함수에 접근 가능(변수 등)</p>
+    <p onclick="closureTest02('아이유');">클로저 : 외부함수에 접근 가능(변수 등)</p>
+    <a href="./js04-closure.html">여기서 closure은 별도로 다룸</a>
+
+</body>
+</html>

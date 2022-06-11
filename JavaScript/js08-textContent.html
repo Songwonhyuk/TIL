@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>innerHTML / innerText / textContent</h1>
+    <ol>
+        <li>innerHTML</li>
+        <p>Element의 속성으로 해당 Element의 HTML, XML을 읽어오거나 설정할 수 잇음<br>
+           HTML 태그 요소들까지 입력해서 직접 변경가능하다는 특징이 있음
+        </p>
+        <li>innerText</li>
+        <p>Element의 속성으로 해당 Element내에서 사용자에게 보여지는 텍스트 값을 읽어 옴<br>
+            마크업 언어(style 등)가 적용된 상태로 읽어온다는 특징<br>
+            단, 사용자에게 보이지 않는 텍스트 값은 가져오지 않음<br>
+            ex. 'display : none'으로 된 태그의 텍스트는 사용자에게 보이지 않는 텍스트이므로 가져오지 않음
+        </p>
+        <li>textContent</li>
+        <p>Node의 속성으로 script나 style 태그와 상관없이 해당 노드가 가지고 있는 텍스트 값을 그대로 읽음<br>
+            마크업 태그를 제외한 모든 문자열을 읽고 변경 가능<br>
+            textContent가 innerHTML에 비해 성능적으로 좋은 퍼포먼스를 보임<br>
+            why? innerHTML은 매번 스타일링까지 적용해서 헤비한 메소드이기 때문!
+        </p>
+        <li>.value</li>
+        <p>input과 같은 form요소의 값을 가져오고 싶을때 사용</p>
+    </ol>
+
+    <div id="div1">good evening! 
+        <span>hello</span>
+        <span style="display : none">ya</span>
+    </div>
+</body>
+</html>
