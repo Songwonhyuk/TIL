@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function searchPar() {
+            var child02 = document.getElementsByTagName("p")[1];
+            var div = child02.parentNode; 
+            //console.log(div.nodeName); // div 출력
+            div.style.backgroundColor = "pink";
+        };
+
+        function searchChi() {
+            var div = document.getElementsByTagName("div")[0];
+            var divChildren = div.childNodes; 
+            //console.log(divChildren); 
+            // NodeList(7)의 구성 : [text, p, text, p, text, p, text] <= ENTER도 텍스트 노드로 잡아주기 때문
+            divChildren[3].style.backgroundColor = "blue"
+        }
+
+        /*
+            parentNode : 주어진 요소의 부모 노드를 반환
+            childNodes : 주어진 요소의 자식 노드 모음을 반환 
+                        => 자식 노드 리스트로 반환. 특징은 자식이 꼭 태그가 아니여도 다 품고있음
+                           ex. 엔터로 인한 공백도 노드 리스트에 포함시킴
+        */
+    </script>
+</head>
+<body>
+    <h1>부모 탐색, 자식 탐색</h1>
+
+    <div>
+        <p>child01</p>
+        <p>child02</p>
+        <p>child03</p>
+    </div>
+
+    <div>
+        <button onclick="searchPar();">부모탐색</button>
+        <button onclick="searchChi();">자식탐색</button>
+    </div>
+</body>
+</html>

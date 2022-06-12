@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function eleCreate() {
+            var div = document.createElement("div");
+
+            // 스타일 넣어주느 방법 1
+            //var attr = document.createAttribute("style");
+            //attr.nodeValue = "border : 2px solid blue";
+            //div.setAttributeNode(attr);
+
+            // 방법2
+            div.setAttribute("style", "border : 2px solid red");
+
+            var txt = document.createTextNode("엘리먼트 생성");
+
+            div.appendChild(txt);
+
+            document.body.appendChild(div);
+
+            /*
+                엘리먼트 객체 생성 :createElement('tagename');
+                객체의 속성 생성 : createAttribute('attrName');
+                -> 엘리먼트에 적용 : setAttributeNode();
+
+                객체에다가 바로 속성 적용 : setAttribute("attrName", "attrVal"); <= ("속성이름", "속성값")
+
+                텍스트 객체 생성 : createTextNode("text");
+
+            */
+
+        }
+
+
+    </script>
+</head>
+<body>
+    
+    <button onclick="eleCreate();">엘리먼트 생성하기</button>
+</body>
+</html>

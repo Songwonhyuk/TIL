@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function locTest() {
+            //location.href="https://www.naver.com" // index -> js14 -> naver : 뒤로가기하면 js14가 나옴
+            location.replace("http://www.naver.com"); //index -> js14 replace naver(현재페이지가 바뀜) : 따라서 뒤로가기 하면 index가 나옴
+            //location.reload(); // 새로고침
+        }
+    </script> 
+</head>
+<body>
+    
+    <input type="text">
+    <button onclick="locTest();">이동</button>
+</body>
+</html>
