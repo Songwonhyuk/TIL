@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+
+        #menubox {position: relative;}
+        #menu {overflow: auto;}
+        .sel{
+            width: 140px;
+            height: 140px;
+            border: 5px dotted red;
+            position: absolute;
+            left: 300px;
+        }
+
+        button {
+            width: 150px;
+            height: 50px;
+            margin-left: 300px;
+        }
+
+    </style>
+    <script src="./resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function(){
+            setInterval(function(){
+                var div = $("#menu");
+                $(".active").first().appendTo(div);
+            }, 50);
+
+            $("button").click(function(){
+                $("img").toggleClass("active");
+                if($("button").text()=="start"){
+                    $("button").text("stop");
+                } else {
+                    $("button").text("start");
+                    alert($("img:eq(2)").attr("alt"));
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <h1>777</h1>
+
+    <div id="menubox">
+        <div class="sel"></div>
+        <div id="menu">
+            <img src="./resources/image/img01.png" alt="img01">
+            <img src="./resources/image/img02.png" alt="img02">
+            <img src="./resources/image/img03.png" alt="img03">
+            <img src="./resources/image/img04.png" alt="img04">
+            <img src="./resources/image/img05.png" alt="img05">
+        </div>
+    </div>
+    <button>start</button>
+</body>
+</html>

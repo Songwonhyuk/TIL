@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+    <script src="./resources/js/jquery-3.6.0.min.js"></script>
+    <!-- 링크 불러오는 src 속성을 쓸 때의 script 태그는 단독으로 씀!!-->
+
+
+    <script>
+        /*
+            Jqeury 기본 작성법은 : css 선택자
+            jquery("id").method();
+            $("css selector").method;   [jquery = $]
+            // ex. $("p").css("color","red");
+
+
+            //javascript
+            //1.
+            $(document).ready(function(){
+
+            });
+
+            //2.
+            $(function(){
+
+            });
+        */
+
+        $(function() {
+            $('#test-btn').click(function(){
+                alert("클릭했음!");
+            });
+
+            // document.getElementById("test-btn").onclick = function(){alert("클릭했음");};
+        });
+
+        function showImg() {
+            $("img").show();
+        };
+
+        function resizeImg() {
+            $("img").css({"width":"50px","height":"50px"});
+        };
+
+        function addImg() {
+            $("img").last().after("<img src='resources/image/img01.png'>");
+        };
+        // last() 메서드 : 선택된 엘리먼트들 중에 마지막 요소 탐색
+        // after() 메서드 : 선택된 엘리먼트 뒤에 새로운 요소를 추가
+
+        function toggleImg() {
+            $("img").toggle();
+        };
+    </script>
+</head>
+<body>
+    <h1>Jqeury : javascript Libarary</h1>
+    <!-- library : 기능의 모음.(메서드 등)-->
+
+    <button id="test-btn">클릭미</button>
+    <br>
+    <button onclick="showImg();">이미지 보이기</button>
+    <button onclick="resizeImg();">이미지 축소</button>
+    <button onclick="addImg();">이미지 추가</button>
+    <button onclick="toggleImg();">이미지 보이기/숨기기</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+        <img src="./resources/image/img01.png" alt="test">
+    </div>
+</body>
+</html>

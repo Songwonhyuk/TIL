@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        .addSize{
+            width: 300px;
+            height: 300px;
+        }
+        .onOffImg{display: none;}
+    </style>
+
+    <script src="./resources/js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#btn").click(function(){
+                $("img").toggleClass("onOffImg");
+                // .toggleClass("onOffImg") : onOffImg 클래스가 없으면 넣고 있으면 없앰
+                // style에서 onOffImg의 display가 none이기 때문에 
+                // 해당 클래스가 생기면 그림이 없어지고, 없어지면 그림이 나타나게 on/off 기능 구현
+            });
+
+            $("img").click(function(){
+                if ($(this).hasClass("addSize")) {
+                    $(this).removeClass("addSize").attr("title", "이미지 축소");
+                } else {
+                    $(this).addClass("addSize").attr("title", "이미지 확대")
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    
+    <button id="btn">class on/off</button>
+    <br>
+    <img src="./resources/image/img01.png" alt="img01" title="이미지 1번">
+    <img src="./resources/image/img02.png" alt="img02" title="이미지 2번">
+    <img src="./resources/image/img03.png" alt="img03" title="이미지 3번">
+
+</body>
+</html>

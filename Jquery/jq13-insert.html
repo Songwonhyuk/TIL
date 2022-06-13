@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./resources/js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("div").css("border", "1px solid red");
+            $("button:eq(0)").click(function(){
+                $("#base").after("<div>새로운 엘리먼트(after)</div>");
+            });
+            
+            $("button:eq(1)").click(function(){
+                $("<div>새로운 엘리먼트(insertAfter)</div>").insertAfter("#base");
+            });
+
+            // after || insertAfter 
+            // 기능적으로는 완전히 똑같음 : 기준이 되는 타겟의 바로 뒤에 형제를 만드는 기능
+            // 문법 구조상의 차이만 존재
+            // $("taget").after("추가할 내용")
+            // $("추가할 내용").insertAfter("target")
+
+            $("button:eq(2)").click(function(){
+                $("#base").before("<div>새로운 엘리먼트(before)</div>");
+            });
+            $("button:eq(3)").click(function(){
+                $("<div>새로운 엘리먼트(insertBefore)</div>").insertBefore("#base"); 
+            });
+
+            // before || insertBefore
+            // 기준이 되는 타겟의 바로 앞에 형제요소를 만드는 기능
+            // $("taget").before("추가할 내용")
+            // $("추가할 내용").insertBefore("target")
+        });
+    </script>
+</head>
+<body>
+
+    <button>after</button>
+    <button>insertAfter</button>
+    <button>before</button>
+    <button>insertBefore</button>
+
+    <div id="base">
+        <p>외부 추가</p>
+    </div>
+</body>
+</html>
